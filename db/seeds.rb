@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+12.times do |i|
+    Task.create(
+        name: "Actividad #{i + 1}",
+        photo: "http://lorempixel.com/400/200/technics/#{i + 1}/"
+    )
+end

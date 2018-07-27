@@ -31,7 +31,7 @@
             <li><a href="#">Link1</a></li>
             <li>
               <% if user_signed_in?%>
-                <%= link_to 'My histories', myhistory_path(current_user.id) %>
+                <%= link_to 'tareas', tasks_path %>
               <% end %>
               </li>
           </ul>
