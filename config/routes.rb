@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :tasks
+  get 'user_tasks/create'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :tasks do
+    resources :user_tasks
+  end
+
   root to: 'tasks#index'
 end

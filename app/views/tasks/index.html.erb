@@ -2,7 +2,7 @@
 
 <h1>Tasks</h1>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Name</th>
@@ -20,7 +20,32 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
+<div class="row">
+  <% @tasks.each do |task| %>
+    <div class="col-sm-4 panel panel-default">
+      <div class="panel-heading">
+        <img src="<%= task.photo %>" alt="foto task" class="img-responsive">
+      </div>
+      <div class="panel-content">
+        <p><%= task.name %></p>
+      </div>
+      <div class="panel-footer">
+        <%= link_to 'Show', task , class: 'btn btn-sm btn-primary'%>
+        <% if user_signed_in? && task.users.find_by(id: current_user.id)%>
+          <%= link_to 'Desmarcar', task_user_tasks_path(task) , class: 'btn btn-sm btn-warning', method: :post%>
+        <% else %>
+          <%= link_to 'Completar', task_user_tasks_path(task) , class: 'btn btn-sm btn-success', method: :post%>
+        <% end %>
+
+
+        <!-- <%= link_to 'Edit', edit_task_path(task) %> -->
+        <!-- <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+      </div>
+    </div>
+  <% end %>
+</div>
+
 
 <br>
 
