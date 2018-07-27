@@ -19,7 +19,7 @@
           <% end %>
         </li>
         <% if user_signed_in?%>
-          <li class="badge"> Tareas completadas:
+          <li class="badge nav-text"> Tareas completadas:
             <%= current_user.tasks.count %>
           </li>
           <li class="badge"> Tareas totales:

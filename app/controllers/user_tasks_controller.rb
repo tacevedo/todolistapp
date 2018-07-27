@@ -8,4 +8,12 @@ class UserTasksController < ApplicationController
       redirect_to tasks_path, notice: 'NO Se ha podido marcar como completada la tarea'
     end
   end
+
+  def updated
+    @usertask = UserTask.find(params[:id])
+    @usertask.update(post_params)
+    redirect_to tasks_path
+  end
+
+
 end

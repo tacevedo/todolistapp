@@ -16,3 +16,30 @@
 body{
   margin: 0;
 }
+.btn{
+  color: #fff !important;
+}
+img.img-top5{
+  max-height: 80px;
+  margin: 0 auto;
+}
+
+.navbar-header .navbar-brand{
+  background-color: #ccc;
+  color: #0d3668;
+  border-radius: 20px;
+}
+.navbar-header .navbar-brand:hover{
+  background-color: #ddd;
+  color: #0d3668;
+  border-radius: 20px;
+}
+.badge{
+  background-color: transparent;
+  color: #60d16b;
+  line-height: 28px;
+  padding: 15px;
+  display: block;
+  height: 60px;
+  vertical-align: middle;
+}

@@ -1,23 +1,35 @@
 
-
-<p>
-  <strong>Name:</strong>
-  <%= @task.name %>
-</p>
 <div class="container">
-  <p>Usuarios que han completado la tarea</p>
-  <% @task.users.each do |u| %>
-    <p><%= u.name %></p>
-  <% end %>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+
+      <h3>Titulo: <strong><%= @task.name %></strong></h3>
+    </div>
+    <div class="panel-body">
+      <h4>Usuarios que han completado la tarea</h4>
+      <ul><% @task.users.each do |u| %>
+          <li><%= u.name %></li>
+          <% end %>
+      </ul>
+
+    </div>
+    <div class="panel-footer">
+      <h4>Ranking: primeros 5</h4>
+      <ol><% @task.users.order('created_at ASC').limit(5).each do |u| %>
+
+        <li class="row">
+          <div class="col-sm-2">
+            <img src="<%= u.photo %>" alt="foto user" class="img-responsive img-top5">
+          </div>
+          <div class="col-sm-10">
+            <p><%= u.name %></p>
+          </div>
+        </li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-  <p>Ranking: primeros 5</p>
-  <% @task.users.each do |u| %>
-    <p><%= u.name %></p>
-    <img src="<%= u.photo %>" alt="foto user" class="img-responsive">
-  <% end %>
-</div>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<!-- <%= link_to 'Edit', edit_task_path(@task) %> | -->
+<%= link_to 'Back', tasks_path, class: 'btn btn-primary' %>
