@@ -7,17 +7,27 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<%= root_path %>">Pictory</a>
+      <a class="navbar-brand" href="<%= root_path %>">Todo list app</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Link1</a></li>
+
         <li>
           <% if user_signed_in?%>
-            <%= link_to 'My histories', myhistory_path(current_user.id) %>
+            <%= link_to 'tareas', tasks_path %>
           <% end %>
+        </li>
+        <% if user_signed_in?%>
+          <li class="badge"> Tareas completadas:
+            <%= current_user.tasks.count %>
           </li>
+          <li class="badge"> Tareas totales:
+            <%= Task.all.count %>
+          </li>
+
+        <% end %>
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -30,6 +40,7 @@
              <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <% if user_signed_in? %>
+              <li><%= link_to 'Profile', edit_user_registration_path(current_user), method: :get %></li>
               <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to 'Sign in', new_user_session_path %></li>

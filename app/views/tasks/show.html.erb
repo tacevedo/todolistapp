@@ -4,6 +4,20 @@
   <strong>Name:</strong>
   <%= @task.name %>
 </p>
+<div class="container">
+  <p>Usuarios que han completado la tarea</p>
+  <% @task.users.each do |u| %>
+    <p><%= u.name %></p>
+  <% end %>
+</div>
+
+<div class="container">
+  <p>Ranking: primeros 5</p>
+  <% @task.users.each do |u| %>
+    <p><%= u.name %></p>
+    <img src="<%= u.photo %>" alt="foto user" class="img-responsive">
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
