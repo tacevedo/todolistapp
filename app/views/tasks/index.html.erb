@@ -23,28 +23,31 @@
 </table> -->
 <div class="row">
   <% @tasks.each do |task| %>
-    <div class="col-sm-4 panel panel-default">
-      <div class="panel-heading">
-        <img src="<%= task.photo %>" alt="foto task" class="img-responsive img-thumbnail">
-      </div>
-      <div class="panel-content">
-        <p><%= task.name %></p>
-      </div>
-      <div class="panel-footer">
-        <%= link_to 'Show', task , class: 'btn btn-sm btn-primary'%>
-        <% if user_signed_in? && task.users.find_by(id: current_user.id)%>
-          <%= link_to 'Desmarcar', task_user_tasks_path(task) , class: 'btn btn-sm btn-warning', method: :post%>
-        <% else %>
-          <% if user_signed_in?%>
-            <%= link_to 'Completar', task_user_tasks_path(task) , class: 'btn btn-sm btn-success', method: :post%>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <img src="<%= task.photo %>" alt="foto task" class="img-responsive thumbnail">
+        </div>
+        <div class="panel-body">
+          <h3><%= task.name %></h3>
+        </div>
+        <div class="panel-footer">
+          <%= link_to 'Show', task , class: 'btn btn-sm btn-primary'%>
+          <% if user_signed_in? && task.users.find_by(id: current_user.id)%>
+            <%= link_to 'Desmarcar', task_user_tasks_path(task) , class: 'btn btn-sm btn-warning', method: :patch%>
+          <% else %>
+            <% if user_signed_in?%>
+              <%= link_to 'Completar', task_user_tasks_path(task) , class: 'btn btn-sm btn-success', method: :post%>
+            <% end %>
+
           <% end %>
 
-        <% end %>
 
-
-        <!-- <%= link_to 'Edit', edit_task_path(task) %> -->
-        <!-- <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+          <!-- <%= link_to 'Edit', edit_task_path(task) %> -->
+          <!-- <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+        </div>
       </div>
+
     </div>
   <% end %>
 </div>

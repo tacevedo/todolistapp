@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   end
 
   root to: 'tasks#index'
-  patch 'tasks/:id', to: 'tasks#update'
+  patch 'user_tasks/:id', to: 'user_tasks#update'
 end

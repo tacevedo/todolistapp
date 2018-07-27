@@ -9,11 +9,16 @@ class UserTasksController < ApplicationController
     end
   end
 
-  def updated
+  def update
     @usertask = UserTask.find(params[:id])
-    @usertask.update(post_params)
+    puts "paraaaams -------------"
+    puts params
+    @usertask.update(usertask_params)
     redirect_to tasks_path
   end
 
-
+  private
+  def usertask_params
+    params.require(:user_tasks).permit(:user_id, :task_id, :completed)
+  end
 end
